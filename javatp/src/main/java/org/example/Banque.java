@@ -3,10 +3,11 @@ package org.example;
 public class Banque {
     private String nomBanque;
     private Client[] clients = new Client[1];
-    Banque banque = new Banque("sbh");
+
     public Banque(String nomBanque) {
         this.nomBanque =nomBanque;
     }
+
 
     public void ajouterClient(String nomClient){
         for (Client client:clients) {
@@ -28,6 +29,7 @@ public class Banque {
     }
     public void afficherBilan(){
         System.out.println("bilan general de la banque "+nomBanque);
+        Banque banque = new Banque("sbh");
         for (Client client : banque.getClients()) {
             if (client == null) {
                 break;
@@ -35,7 +37,14 @@ public class Banque {
             bilanClient(client);
         }
     }
-
+    public void renflouer(){
+        for (Client client : clients) {
+            if (client == null) {
+                break;
+            }
+            client.renflouer();
+        }
+    }
     public Client[] getClients() {
         return this.clients;
     }

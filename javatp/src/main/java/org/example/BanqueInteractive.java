@@ -43,16 +43,17 @@ public class BanqueInteractive {
             Client client = banque.getClients()[indexClient];
             if (client != null) {
                 System.out.println("Quelle opération voulez-vous effectuer sur le client " + client.getNom() + " ?");
-                System.out.println("1) Afficher un bilan");
+                System.out.println("1) Cree un new compte");
                 System.out.println("2) Faire un retrait");
                 System.out.println("3) Faire un dépôt");
                 System.out.println("4) Faire un virement");
-                System.out.println("5) cree un new compte");
+                System.out.println("5) Afficher un bilan");
+                System.out.println("6) Renflouer le compte");
                 int choix = scanner.nextInt();
-                if (choix == 1){
+                if (choix == 5){
                     banque.bilanClient(client);
                 }
-                else if (choix == 5) {
+                else if (choix == 1) {
                     System.out.println("entre le solde de new compte :");
                     client.ajouterCompte(scanner.nextFloat());
                 }
@@ -107,11 +108,18 @@ public class BanqueInteractive {
                         client.getComptes()[comptechoisi-1].virer(montantVire,destinataire);
                         System.out.println("Le virment a ete effectue  ");
 
-                    }
+                    } else if (choix == 6) {
+                            banque.renflouer();
+                    System.out.println("Le renfloument a ete effectue  ");
 
                 }
             }
+            } else if (input == 3) {
+            System.out.println("le bilan général est :");
+            banque.afficherBilan();
         }
     }
+
+}
 
 
